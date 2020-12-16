@@ -1,0 +1,41 @@
+<div class="text-center"  id="login_div">
+  <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm" class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input
+      [ngClass]="{'bad-form': username.touched == true && username.valid == false}"
+      type="text"
+      id="inputUsername"
+      name="username"
+      class="form-control"
+      placeholder="Username"
+      required
+      autofocus
+      ngModel
+      #username="ngModel">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input
+      [ngClass]="{'bad-form': password.touched == true && password.valid == false}"
+      type="password"
+      id="inputPassword"
+      name="password"
+      class="form-control"
+      placeholder="Password"
+      ngModel
+      required
+      #password="ngModel">
+    <div class="checkbox mb-3">
+      <label>
+        <input
+          type="checkbox"
+          value="remember-me"> Remember me
+      </label>
+    </div>
+    <button
+      class="btn btn-lg btn-orange btn-block"
+      [disabled]="!loginForm.valid"
+      type="submit">
+      Sign in</button>
+  </form>
+</div>
+

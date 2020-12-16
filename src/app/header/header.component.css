@@ -1,0 +1,13 @@
+#login_btn {
+  border-color: white;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+.navbar {
+  -webkit-box-shadow: 10px 10px 6px -10px #dedede ;
+  -moz-box-shadow: 10px 10px 6px -10px #dedede;
+  box-shadow: 0 16px 50px -6px #dedede;
+}

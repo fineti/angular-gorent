@@ -1,0 +1,49 @@
+.carousel-inner > .item {
+  height: 100vh;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+img {
+  border-radius: 10px;
+}
+
+.bottom-right {
+  position: absolute;
+  padding: 5px 12px 5px 12px;
+  bottom: 12px;
+  right: 16px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+
+.modal-dialog { /* Width */
+  max-width: 55%;
+  width: auto !important;
+}
+
+
+.modal {
+  justify-content: center;
+  align-items: center;
+}
+
+.div-on-rails {
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 430px;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 40px;
+
+}
+
+
