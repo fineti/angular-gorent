@@ -1,0 +1,25 @@
+.div-on-rails {
+  padding-left: 0px;
+  padding-right: 0px;
+  margin-left: 10px;
+  padding-bottom: 20px;
+  height: auto;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 40px;
+}
+
+::ng-deep .mat-form-field-flex {
+  /*change color of input*/
+  background-color: white !important;
+}
+
+::ng-deep .mat-form-field-label {
+  /*change color of label*/
+  color: #3B3735 !important;
+}
+
+.btn-dark {
+  width: 38px;
+  height: 38px;
+}

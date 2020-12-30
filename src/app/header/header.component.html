@@ -1,25 +1,28 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background: white">
-  <a class="navbar-brand" routerLink="">GoRent</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<nav id="navibar" class="navbar navbar-expand-lg navbar-light" [ngClass]="{'navbar-shadow': !isHomepage}" style="background: {{isHomepage ? 'transparent' : 'white'}}">
+  <a class="navbar-brand" routerLink="" style="color: {{isHomepage ? 'white' : 'black'}}">GoRent</a>
+  <button class="navbar-toggler"  style="background: white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="" routerLinkActive="active-link-homepage" [routerLinkActiveOptions]="{ exact: true }">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/discover">Discover</a>
+        <a class="nav-link" style="color: {{isHomepage ? 'white' : 'black'}}" routerLink="/discover" routerLinkActive="active-link">Discover</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/about-us">About us</a>
+        <a class="nav-link" style="color: {{isHomepage ? 'white' : 'black'}}" routerLink="/about-us" routerLinkActive="active-link">About us</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/contact">Contact</a>
+        <a class="nav-link" style="color: {{isHomepage ? 'white' : 'black'}}" routerLink="/contact" routerLinkActive="active-link">Contact</a>
       </li>
     </ul>
-    <button id="login_btn" class="btn btn-light my-2 my-sm-0 btn-rounded" type="submit" routerLink="/login">Login</button>
-    <button id="signup_btn" class="btn btn-outline-danger btn-orange my-2 my-sm-0 btn-rounded" type="submit">Signup</button>
+    <button *ngIf="!loginService.isLogged" id="login_btn" class="btn btn-light my-2 my-sm-0 btn-rounded" style="width: 100px; margin-right: 10px" type="submit" routerLink="/login" routerLinkActive="active-link active-btn-gray active-btn">Login</button>
+    <button *ngIf="!loginService.isLogged" id="signup_btn" class="btn btn-outline-danger btn-orange my-2 my-sm-0 btn-rounded" style="width: 100px;" type="submit" routerLink="/signup" routerLinkActive="active-link active-btn active-btn-orange">Signup</button>
+    <button *ngIf="loginService.isLogged && loginService.userType==='client'" id="manageBookings_btn" class="btn btn-outline-danger btn-orange my-2 my-sm-0 btn-rounded" type="submit" routerLink="/manage/bookings" routerLinkActive="active-link active-btn active-btn-orange" style="margin-right: 10px">Manage Bookings</button>
+    <button *ngIf="loginService.isLogged && loginService.userType==='host'" id="manageApartments_btn" class="btn btn-outline-danger btn-orange my-2 my-sm-0 btn-rounded" type="submit" routerLink="/manage/apartments" routerLinkActive="active-link active-btn active-btn-orange" style="margin-right: 10px">Manage Apartments</button>
+    <button *ngIf="loginService.isLogged" id="logout_btn" class="btn btn-light my-2 my-sm-0 btn-rounded" type="submit" (click)="onLogout()" routerLink="/" routerLinkActive="active-link  active-btn-gray active-btn" style="width: 100px;">Logout</button>
 
   </div>
 </nav>

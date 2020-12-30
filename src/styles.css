@@ -83,6 +83,30 @@ fieldset[disabled] .btn-orange.active {
   background-color: #FFFFFF;
 }
 
+btn-outline-orange.disabled,
+.btn-outline-orange[disabled],
+fieldset[disabled] .btn-outline-orange,
+.btn-outline-orange.disabled:hover,
+.btn-outline-orange[disabled]:hover,
+fieldset[disabled] .btn-outline-orange:hover,
+.btn-outline-orange.disabled:focus,
+.btn-outline-orange[disabled]:focus,
+fieldset[disabled] .btn-outline-orange:focus,
+.btn-outline-orange.disabled:active,
+.btn-outline-orange[disabled]:active,
+fieldset[disabled] .btn-outline-orange:active,
+.btn-outline-orange.disabled.active,
+.btn-outline-orange[disabled].active,
+fieldset[disabled] .btn-outline-orange.active {
+  background-color: #FF8A6C ;
+  border-color: #FF8A6C;
+}
+
+.btn-outline-orange .badge {
+  color: #FFFFFF;
+  background-color: #FF8A6C;
+}
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #efefef
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #efefef;
 }

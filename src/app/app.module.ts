@@ -19,11 +19,16 @@ import {MaterialElevationDirective} from './common/directives/material-elevation
 import { DetailListComponent } from './common/apartment-detail/detail-list/detail-list.component';
 import { ReviewListComponent } from './common/review-list/review-list.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AgmCoreModule } from '@agm/core';
+import { ManageApartmentsComponent } from './components/manage-apartments/manage-apartments.component';
+import { ManageBookingsComponent } from './components/manage-bookings/manage-bookings.component';
+import {MatSelectModule} from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -38,6 +43,8 @@ import { AgmCoreModule } from '@agm/core';
     MaterialElevationDirective,
     DetailListComponent,
     ReviewListComponent,
+    ManageApartmentsComponent,
+    ManageBookingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,12 +58,13 @@ import { AgmCoreModule } from '@agm/core';
     MatCardModule,
     FormsModule,
     MatFormFieldModule,
-    // MatInputModule,
-    // MatButtonModule,
-    // ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatExpansionModule,
+    MatCheckboxModule
   ],
   providers: [ApartmentService],
   bootstrap: [AppComponent]

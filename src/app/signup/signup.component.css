@@ -1,0 +1,66 @@
+img, ::after, ::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+.col.col-6-md {
+  padding: 0;
+}
+
+h1 {
+  margin-bottom: 40px!important;
+}
+
+#signup_div {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 80vh;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.form-signup {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signup .checkbox {
+  font-weight: 400;
+}
+.form-signup .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signup .form-control:focus {
+  z-index: 2;
+}
+.form-signup input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signup input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+/*.ng-invalid:not(form)  {*/
+/*  border-left: 5px solid #a94442; !* red *!*/
+/*}*/
+
+.bad-form {
+  border-left: 5px solid #a94442; /* red */
+}
+

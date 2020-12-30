@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Apartment} from '../entities/apartment';
+import {ApartmentService} from '../services/apartment.service';
 
 @Component({
   selector: 'app-homepage',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  popularApartments: Apartment[];
+  width: number = 350;  // TODO: this should take initial width
+
+  constructor(private apartmentService: ApartmentService) { }
 
   ngOnInit(): void {
+    this.listApartments();
+  }
+
+  listApartments(): void {
+    this.apartmentService.getApartmentList().subscribe(
+      data => {
+        this.popularApartments = data.slice(0, 4);
+      }
+    );
   }
 
 }

@@ -2,9 +2,9 @@
   <div class="py-3 px-3">
     <h1 >{{apartment.title}}</h1>
     <div class="text-secondary">
-      <span>{{apartment.city}}, </span>
-      <span>{{apartment.country}} - </span>
-      <span>{{host.firstName}} {{host.lastName}}</span>
+      <i class="fas fa-map-marker-alt"></i>
+      <span>  {{apartment.city}}, </span>
+      <span>{{apartment.country}} </span>
     </div>
   </div>
 
@@ -70,6 +70,17 @@
 <!--          </agm-map>-->
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.682386009916!2d38.71681861525258!3d7.928203707437595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x17b49c6011ac0c85%3A0xbe2874ddcd7fa6f7!2sZiway%2C%20Etiopia!5e0!3m2!1sro!2sro!4v1607890258465!5m2!1sro!2sro" width="100%" height="600" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
         </div>
+        <div class="my-5" style="width: 100%">
+          <h3 style="padding-left:5px; margin-bottom: 20px; background-image: linear-gradient(to right, #fdcfc1 , #efefef);">About host</h3>
+          <div class="mb-3">
+              <img style="display: inline-block" class="img-fluid mr-3" width="70px" src="{{host.profilePictureUrl}}" alt="">
+              <h3 style="display: inline-block;">{{host.firstName}} {{host.lastName}}</h3>
+          </div>
+          <div>
+            <p>Email: {{host.email}}</p>
+            <p>Phone: {{host.phoneNumber}}</p>
+          </div>
+        </div>
         <app-review-list></app-review-list>
         <div style="height: 100px"></div>
 
@@ -91,15 +102,15 @@
           <p>Guests</p>
           <div>
             <div style="display: inline-block;width: 70px; text-align: end;  margin-right: 7px;"><p >Adults:</p></div>
-            <button style="display: inline-block" class="btn btn-outline-danger btn-orange btn-rounded" (click)="addTo('adults')" [disabled]="nrGuests>=this.apartment.nrPerson">+</button>
+            <button style="display: inline-block" class="btn btn-outline-danger btn-orange btn-rounded btn-circle" (click)="addTo('adults')" [disabled]="nrGuests>=this.apartment.nrPerson">+</button>
             <p class="mx-3" style="display: inline-block">{{nrAdults}}</p>
-            <button style="display: inline-block;" class="btn btn-outline-danger btn-orange btn-rounded" (click)="subFrom('adults')" [disabled]="nrAdults<=1">   - </button>
+            <button style="display: inline-block;" class="btn btn-outline-danger btn-orange btn-rounded btn-circle" (click)="subFrom('adults')" [disabled]="nrAdults<=1">   - </button>
           </div>
           <div>
             <div style="display: inline-block;width: 70px; text-align: end; margin-right: 7px;"><p >Children:</p></div>
-            <button style="display: inline-block" class="btn btn-outline-danger btn-orange btn-rounded" (click)="addTo('children')" [disabled]="nrGuests>=this.apartment.nrPerson">+</button>
+            <button style="display: inline-block" class="btn btn-outline-danger btn-orange btn-rounded btn-circle" (click)="addTo('children')" [disabled]="nrGuests>=this.apartment.nrPerson">+</button>
             <p class="mx-3" style="display: inline-block">{{nrChildren}}</p>
-            <button style="display: inline-block;" class="btn btn-outline-danger btn-orange btn-rounded" (click)="subFrom('children')" [disabled]="nrChildren<=0">   - </button>
+            <button style="display: inline-block;" class="btn btn-outline-danger btn-orange btn-rounded btn-circle" (click)="subFrom('children')" [disabled]="nrChildren<=0">   - </button>
           </div>
           <button style="margin-top: 10px" class="btn btn-orange btn-orange">Request Booking</button>
         </form>

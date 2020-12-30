@@ -6,8 +6,36 @@
   font-weight: 700;
 }
 
-.navbar {
+.navbar-shadow {
   -webkit-box-shadow: 10px 10px 6px -10px #dedede ;
   -moz-box-shadow: 10px 10px 6px -10px #dedede;
   box-shadow: 0 16px 50px -6px #dedede;
+}
+
+.active-link {
+  font-weight: 600;
+  border-bottom:5px solid #e0e0e0;
+  color: black!important;
+}
+
+.active-link-homepage {
+  font-weight: 600;
+  border-bottom:5px solid #e0e0e0;
+  color: white!important;
+}
+
+.active-btn {
+  border-bottom: none;
+}
+
+.active-btn-orange {
+  color: white!important;
+}
+
+.active-btn-gray {
+  color: black!important;
+}
+
+app-header {
+  background-color: transparent;
 }

@@ -1,1 +1,105 @@
-<p>signup works!</p>
+<div class="text-center"  id="signup_div">
+  <form (ngSubmit)="onSubmit(signupForm)" #signupForm="ngForm" class="form-signup">
+    <h1 class="h1 mb-3 font-weight-normal" style="text-align: left">Please sign up</h1>
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input
+      [ngClass]="{'bad-form': username.touched == true && username.valid == false}"
+      type="text"
+      id="inputUsername"
+      name="username"
+      class="form-control"
+      placeholder="Username"
+      required
+      autofocus
+      ngModel
+      #username="ngModel">
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input
+      [ngClass]="{'bad-form': email.touched == true && email.valid == false}"
+      type="text"
+      id="inputEmail"
+      name="email"
+      class="form-control"
+      placeholder="Email"
+      required
+      autofocus
+      ngModel
+      #email="ngModel">
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input
+      [ngClass]="{'bad-form': password.touched == true && password.valid == false}"
+      type="password"
+      id="inputPassword"
+      name="password"
+      class="form-control"
+      placeholder="Password"
+      ngModel
+      required
+      #password="ngModel">
+    <p class="mt-5" style="text-align: left">Contact information</p>
+    <label for="firstName" class="sr-only">Password</label>
+    <input
+      [ngClass]="{'bad-form': firstName.touched == true && firstName.valid == false}"
+      type="text"
+      id="firstName"
+      name="firstName"
+      class="form-control"
+      placeholder="First Name"
+      ngModel
+      required
+      #firstName="ngModel">
+    <label for="lastName" class="sr-only">Password</label>
+    <input
+      [ngClass]="{'bad-form': lastName.touched == true && lastName.valid == false}"
+      type="text"
+      id="lastName"
+      name="lastName"
+      class="form-control"
+      placeholder="Last Name"
+      ngModel
+      required
+      #lastName="ngModel">
+    <label for="phoneNumber" class="sr-only">Password</label>
+    <input
+      [ngClass]="{'bad-form': phoneNumber.touched == true && phoneNumber.valid == false}"
+      type="tel"
+      id="phoneNumber"
+      name="phoneNumber"
+      class="form-control"
+      placeholder="Phone Number"
+      ngModel
+      required
+      #phoneNumber="ngModel">
+    <h3 class="h5 mt-5 mb-3 font-weight-normal">I Want to become:</h3>
+    <div class="btn-group mb-3" data-toggle="buttons">
+      <label class="btn btn-orange mx-2">
+        <input
+          type="radio"
+          name="type_user"
+          id="client"
+          required
+          [(ngModel)]="typeUser"
+          value="client"
+        >
+        Client
+      </label>
+      <label class="btn btn-orange mx-2">
+        <input
+          type="radio"
+          name="type_user"
+          id="host"
+          required
+          [(ngModel)]="typeUser"
+          value="host"
+        > Host
+      </label>
+    </div>
+
+    <button
+      class="btn btn-lg btn-orange btn-block"
+      [disabled]="!signupForm.valid"
+      type="submit">
+      Register</button>
+  </form>
+</div>
+

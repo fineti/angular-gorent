@@ -1,14 +1,101 @@
 
-<div class="row">
+<div class="row ml-5">
+  <div class="col-lg-3" style="padding-left: 15px; padding-right: 20px!important;">
+    <div appMaterialElevation [defaultElevation]="2" raisedElevation="16" class="div-on-rails text-center" style="background: #FFB63B; border-radius: 10px; margin-top: 50px">
+      <h3 style="font-weight: 600; text-align: left; margin-left: 10px; padding-top: 10px; margin-bottom: 20px; color: #3B3735">Search</h3>
+      <form [formGroup]="bookingForm" (ngSubmit)="onSubmitSearch()" class="container">
+        <label style="color:#3B3735; text-align: left; float: left" for="destination">Destination</label>
+        <div class="input-group mb-4">
+          <input
+            style="border-right: none"
+            type="text"
+            id="destination"
+            name="destination"
+            class="form-control py-4"
+            placeholder="Destination"
+            required
+            autofocus
+            formControlName="destination">
+          <div class="input-group-append">
+            <div style="background-color: white; border-left: none; padding: 0px; width: 55px; justify-content: center" class="input-group-text">
+              <i style="font-size: 25px" class="fas fa-search-location"></i>
+            </div>
+          </div>
+        </div>
+        <label style="color:#3B3735; text-align: left; float: left" for="datePicker">Check-in/Check-out dates</label>
+        <mat-form-field color="warn" class="my-2" appearance="fill" style="width: 100%;" id="datePicker">
+          <mat-label style="font-size: 15px;">Enter prefered dates</mat-label>
+          <mat-date-range-input formGroupName="dates" [rangePicker]="picker">
+            <input formControlName="checkIn" matStartDate placeholder="Check-in">
+            <input formControlName="checkOut" matEndDate placeholder="Check-out">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+        <p>Guests</p>
+        <div style="display: block; justify-content: left">
+          <div style="display: inline-block;width: 70px; text-align: end;  margin-right: 7px;"><p >Adults:</p></div>
+          <button type="button" style="display: inline-block" class="btn btn-dark  btn-rounded" (click)="addTo('adults')">+</button>
+          <p class="mx-3" style="display: inline-block">{{nrAdults}}</p>
+          <button type="button" style="display: inline-block;" class="btn btn-dark btn-rounded" (click)="subFrom('adults')" [disabled]="nrAdults<=1">   - </button>
+        </div>
+        <div style="display: block;justify-content: left; margin-bottom: 10px">
+          <div style="display: inline-block;width: 70px; text-align: end; margin-right: 7px;"><p >Children:</p></div>
+          <button type="button" style="display: inline-block" class="btn btn-dark btn-rounded" (click)="addTo('children')">+</button>
+          <p class="mx-3" style="display: inline-block">{{nrChildren}}</p>
+          <button type="button" style="display: inline-block; width: 38px" class="btn btn-dark  btn-rounded" (click)="subFrom('children')" [disabled]="nrChildren<=0">   - </button>
+        </div>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                View more filters
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field color="warn" style="width: 100%" appearance="fill">
+              <mat-label>Amenities</mat-label>
+              <mat-select formControlName="amenities" multiple>
+                <mat-select-trigger>
+                  {{bookingForm.controls['amenities'].value ? bookingForm.controls['amenities'].value[0] : ''}}
+                  <span *ngIf="bookingForm.controls['amenities'].value?.length > 1" class="example-additional-selection">
+        (+{{bookingForm.controls['amenities'].value.length - 1}} {{bookingForm.controls['amenities'].value?.length === 2 ? 'other' : 'others'}})
+      </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let amenity of amenitiesStringList" [value]="amenity">{{amenity}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field color="warn" style="width: 100%;" appearance="fill">
+              <mat-label>Facilities</mat-label>
+              <mat-select formControlName="facilities" multiple>
+                <mat-select-trigger>
+                  {{bookingForm.controls['facilities'].value ? bookingForm.controls['facilities'].value[0] : ''}}
+                  <span *ngIf="bookingForm.controls['facilities'].value?.length > 1" class="example-additional-selection">
+        (+{{bookingForm.controls['facilities'].value.length - 1}} {{bookingForm.controls['facilities'].value?.length === 2 ? 'other' : 'others'}})
+      </span>
+                </mat-select-trigger>
+                <mat-option *ngFor="let facility of facilitiesStringList" [value]="facility">{{facility}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field color="warn" style="width: 100%;" appearance="fill">
+              <mat-label>Apartment type</mat-label>
+              <mat-select formControlName="roomTypes">
+                <mat-option *ngFor="let apartmentType of roomTypesStringList" [value]="apartmentType">
+                  {{apartmentType}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div style="text-align: left"><mat-checkbox color="warn">Pet friendly</mat-checkbox></div>
+            <div style="text-align: left"><mat-checkbox color="warn">Smoking allowed</mat-checkbox></div>
 
-  <div class="col-md-2">
-    <div class="container">
-      Search engine
+          </mat-expansion-panel>
+        </mat-accordion>
+        <button style="margin-top: 10px" class="btn btn-orange btn-orange" type="submit">Search</button>
+      </form>
     </div>
 
   </div>
-  <div class="col-md-10">
-    <div class="container">
+  <div class="col-lg-9" style="padding-left: 0px">
+    <div class="container" style="margin-left: 0px">
       <h1 class="mt-3 mb-3">Apartments</h1>
       <app-apartment-list></app-apartment-list>
     </div>

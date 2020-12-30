@@ -10,9 +10,15 @@ import {map} from 'rxjs/operators';
 })
 export class HostService {
 
-  private baseUrl = 'http://localhost:8080/api/clients';
+  private baseUrl = 'http://localhost:8080/api/hosts';
 
   constructor(private httpClient: HttpClient) { }
+
+  getHostList(): Observable<Host[]> {
+    return this.httpClient.get<GetResponse>(this.baseUrl).pipe(
+      map(response => response._embedded.hosts)
+    );
+  }
 
   getHost(hostId: number): Observable<Host> {
     const hostUrl = `${this.baseUrl}/${hostId}`;
