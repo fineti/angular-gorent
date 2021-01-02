@@ -20,3 +20,26 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+
+.ngx-pagination {
+  padding-left: 0px !important;
+}
+
+.ngx-pagination .current,
+.btn-info {
+  background: #17a2b8 !important;
+  border: transparent !important;
+  border-radius: 20px !important;
+}
+
+ngb-pagination ::ng-deep ul > li:not(.active) > a {
+  color: black;
+}
+
+ngb-pagination ::ng-deep ul > li.active > a {
+  background-color: #dc3545 !important;
+}
+
+ngb-pagination ::ng-deep ul > li.active > a.page-item.active .page-link {
+ border-color: red;
+}

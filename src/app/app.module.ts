@@ -17,7 +17,7 @@ import {MatCardModule} from '@angular/material/card';
 import { ApartmentDetailComponent } from './common/apartment-detail/apartment-detail.component';
 import {MaterialElevationDirective} from './common/directives/material-elevation.directive';
 import { DetailListComponent } from './common/apartment-detail/detail-list/detail-list.component';
-import { ReviewListComponent } from './common/review-list/review-list.component';
+import { ReviewListComponent } from './common/apartment-detail/review-list/review-list.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -29,6 +29,8 @@ import { ManageBookingsComponent } from './components/manage-bookings/manage-boo
 import {MatSelectModule} from '@angular/material/select';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatSelectModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NgbModule
   ],
   providers: [ApartmentService],
   bootstrap: [AppComponent]

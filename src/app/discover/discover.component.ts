@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {FeaturesService} from '../services/features.service';
 import {Feature} from '../entities/feature';
 import {TypeRoom} from '../entities/type-room';
+import {Apartment} from '../entities/apartment';
+import {ApartmentService} from '../services/apartment.service';
+import {ApartmentListComponent} from '../components/apartment-list/apartment-list.component';
 
 @Component({
   selector: 'app-discover',
@@ -30,7 +33,8 @@ export class DiscoverComponent implements OnInit {
   // roomTypes = new FormControl();
 
   bookingForm = new FormGroup({
-    destination: new FormControl(),
+    country: new FormControl(),
+    city: new FormControl(),
     dates: new FormGroup({
       checkIn: new FormControl(),
       checkOut: new FormControl()
@@ -38,9 +42,15 @@ export class DiscoverComponent implements OnInit {
     amenities: new FormControl(),
     facilities: new FormControl(),
     roomTypes: new FormControl(),
+    petFriendly: new FormControl(),
+    smokingAllowed: new FormControl()
   });
 
-  constructor(private featuresService: FeaturesService) { }
+  @ViewChild(ApartmentListComponent) private apartmentListComponent:
+    ApartmentListComponent;
+
+  constructor(private featuresService: FeaturesService,
+              private apartmentService: ApartmentService) { }
 
   ngOnInit(): void {
     this.listAmenities();
@@ -100,6 +110,8 @@ export class DiscoverComponent implements OnInit {
   }
 
   onSubmitSearch() {
+    this.apartmentService.setFilters(this.bookingForm, this.nrGuests);
+    this.apartmentListComponent.refresh();
     console.log(this.bookingForm);
   }
 }

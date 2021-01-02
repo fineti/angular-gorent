@@ -4,18 +4,36 @@
     <div appMaterialElevation [defaultElevation]="2" raisedElevation="16" class="div-on-rails text-center" style="background: #FFB63B; border-radius: 10px; margin-top: 50px">
       <h3 style="font-weight: 600; text-align: left; margin-left: 10px; padding-top: 10px; margin-bottom: 20px; color: #3B3735">Search</h3>
       <form [formGroup]="bookingForm" (ngSubmit)="onSubmitSearch()" class="container">
-        <label style="color:#3B3735; text-align: left; float: left" for="destination">Destination</label>
+        <label style="color:#3B3735; text-align: left; float: left" for="country">Country</label>
         <div class="input-group mb-4">
           <input
             style="border-right: none"
             type="text"
-            id="destination"
-            name="destination"
+            id="country"
+            name="country"
             class="form-control py-4"
-            placeholder="Destination"
+            placeholder="Country"
             required
             autofocus
-            formControlName="destination">
+            formControlName="country">
+          <div class="input-group-append">
+            <div style="background-color: white; border-left: none; padding: 0px; width: 55px; justify-content: center" class="input-group-text">
+              <i style="font-size: 25px" class="fas fa-search-location"></i>
+            </div>
+          </div>
+        </div>
+        <label style="color:#3B3735; text-align: left; float: left" for="city">City</label>
+        <div class="input-group mb-4">
+          <input
+            style="border-right: none"
+            type="text"
+            id="city"
+            name="city"
+            class="form-control py-4"
+            placeholder="City"
+            required
+            autofocus
+            formControlName="city">
           <div class="input-group-append">
             <div style="background-color: white; border-left: none; padding: 0px; width: 55px; justify-content: center" class="input-group-text">
               <i style="font-size: 25px" class="fas fa-search-location"></i>
@@ -84,8 +102,8 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <div style="text-align: left"><mat-checkbox color="warn">Pet friendly</mat-checkbox></div>
-            <div style="text-align: left"><mat-checkbox color="warn">Smoking allowed</mat-checkbox></div>
+            <div style="text-align: left"><mat-checkbox color="warn" formControlName="petFriendly">Pet friendly</mat-checkbox></div>
+            <div style="text-align: left"><mat-checkbox color="warn" formControlName="smokingAllowed">Smoking allowed</mat-checkbox></div>
 
           </mat-expansion-panel>
         </mat-accordion>

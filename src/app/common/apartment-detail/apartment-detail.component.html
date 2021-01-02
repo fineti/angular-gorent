@@ -81,20 +81,20 @@
             <p>Phone: {{host.phoneNumber}}</p>
           </div>
         </div>
-        <app-review-list></app-review-list>
+        <app-review-list *ngIf="reviews" [reviews]="reviews" [apartmentId]="apartment.id"></app-review-list>
         <div style="height: 100px"></div>
 
       </div>
       <div appMaterialElevation [defaultElevation]="2" raisedElevation="16" class="col-lg-3 div-on-rails text-center" style="background: white; border-radius: 10px">
         <span class="py-4" style="padding-left: 10px; display: inline-block; font-size: 40px">${{ apartment.price }}</span>
         <span style="padding-left: 5px;display: inline-block">per night</span>
-        <form>
+        <form [formGroup]="bookingForm" (ngSubmit)="onRequestBooking()" class="container">
           <label for="datePicker">Check-in/Check-out dates</label>
           <mat-form-field class="my-2" appearance="fill" style="width: 100%" id="datePicker">
             <mat-label style="font-size: 15px;">Enter prefered dates</mat-label>
             <mat-date-range-input [rangePicker]="picker">
-              <input matStartDate placeholder="Check-in">
-              <input matEndDate placeholder="Check-out">
+              <input formControlName="checkIn" matStartDate placeholder="Check-in">
+              <input formControlName="checkOut" matEndDate placeholder="Check-out">
             </mat-date-range-input>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>
@@ -102,17 +102,17 @@
           <p>Guests</p>
           <div>
             <div style="display: inline-block;width: 70px; text-align: end;  margin-right: 7px;"><p >Adults:</p></div>
-            <button style="display: inline-block" class="btn btn-outline-danger btn-orange btn-rounded btn-circle" (click)="addTo('adults')" [disabled]="nrGuests>=this.apartment.nrPerson">+</button>
+            <button type="button" style="display: inline-block" class="btn btn-outline-danger btn-orange btn-rounded btn-circle" (click)="addTo('adults')" [disabled]="nrGuests>=this.apartment.nrPerson">+</button>
             <p class="mx-3" style="display: inline-block">{{nrAdults}}</p>
-            <button style="display: inline-block;" class="btn btn-outline-danger btn-orange btn-rounded btn-circle" (click)="subFrom('adults')" [disabled]="nrAdults<=1">   - </button>
+            <button type="button" style="display: inline-block;" class="btn btn-outline-danger btn-orange btn-rounded btn-circle" (click)="subFrom('adults')" [disabled]="nrAdults<=1">   - </button>
           </div>
           <div>
             <div style="display: inline-block;width: 70px; text-align: end; margin-right: 7px;"><p >Children:</p></div>
-            <button style="display: inline-block" class="btn btn-outline-danger btn-orange btn-rounded btn-circle" (click)="addTo('children')" [disabled]="nrGuests>=this.apartment.nrPerson">+</button>
+            <button type="button" style="display: inline-block" class="btn btn-outline-danger btn-orange btn-rounded btn-circle" (click)="addTo('children')" [disabled]="nrGuests>=this.apartment.nrPerson">+</button>
             <p class="mx-3" style="display: inline-block">{{nrChildren}}</p>
-            <button style="display: inline-block;" class="btn btn-outline-danger btn-orange btn-rounded btn-circle" (click)="subFrom('children')" [disabled]="nrChildren<=0">   - </button>
+            <button type="button" style="display: inline-block;" class="btn btn-outline-danger btn-orange btn-rounded btn-circle" (click)="subFrom('children')" [disabled]="nrChildren<=0">   - </button>
           </div>
-          <button style="margin-top: 10px" class="btn btn-orange btn-orange">Request Booking</button>
+          <button style="margin-top: 10px" class="btn btn-orange btn-orange" type="submit">Request Booking</button>
         </form>
 
       </div>

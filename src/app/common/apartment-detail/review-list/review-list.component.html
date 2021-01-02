@@ -1,0 +1,43 @@
+<div class="my-5">
+  <h3 style="padding-left:5px; margin-bottom: 20px; background-image: linear-gradient(to right, #fdcfc1 , #efefef);">Reviews</h3>
+  <div id="addReview">
+    <ng-template #t let-fill="fill">
+        <span class="star" [class.full]="fill === 100">
+          <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+        </span>
+    </ng-template>
+    <p style="text-align: center" *ngIf="!isClientLogged()">
+      Must be logged as a client to leave reviews!
+    </p>
+    <form *ngIf="isClientLogged()" [formGroup]="reviewForm" (ngSubmit)="onSubmitReview()" class="mb-2">
+      <div class="form-group">
+        <div class="form-text small">
+          <div *ngIf="reviewForm.controls['rating'].valid" class="text-success">Thanks!</div>
+          <div *ngIf="reviewForm.controls['rating'].invalid" class="text-danger">Please rate us</div>
+        </div>
+        <ngb-rating [starTemplate]="t" formControlName="rating" max="5"></ngb-rating>
+      </div>
+      <div class="form-group">
+        <textarea formControlName="description" style="resize: none" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <button style="display: block; margin-left: auto; margin-right: 0px" class="btn btn-orange" type="submit">Submit</button>
+    </form>
+  </div>
+  <div *ngIf="reviews.length >= 1">
+    <div *ngFor="let review of reviews; let i = index" appMaterialElevation [defaultElevation]="2" raisedElevation="16" style="padding: 10px 5px" class="row">
+      <div style="justify-content: center; align-items: center;" class="col md-12" >
+
+        <img *ngIf="author[i]" src="{{author[i].profilePictureUrl}}" width="100px" height="100px" style="padding: 0px; display: inline; border-radius: 50%" class="img-thumbnail">
+        <div style="display: inline; margin-top: 20px; height: 120px">
+          <ngb-rating style="width: 200px;display: block;" [(rate)]="review.rating" [starTemplate]="t" [readonly]="true" [max]="5"></ngb-rating>
+          <p style="display: block; color: gray" *ngIf="author[i]">{{author[i].firstName}}, {{author[i].lastName}}</p>
+        </div>
+
+        <p style="margin-top: 5px; margin-bottom: 0px">{{review.description}}</p>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center" *ngIf="reviews.length < 1">
+    There are no reviews yet!
+  </div>
+</div>
